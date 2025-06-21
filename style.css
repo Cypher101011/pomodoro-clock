@@ -1,0 +1,421 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+header h1 {
+  color: #4caf50;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+/* Mode Display */
+.mode-display {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mode-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.mode-btn:hover {
+  border-color: #4caf50;
+  transform: translateY(-2px);
+}
+
+.mode-btn.active {
+  background: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
+
+/* Timer Display */
+.timer-display {
+  margin: 2rem 0;
+  position: relative;
+}
+
+#timer {
+  font-size: 4rem;
+  font-weight: 300;
+  color: #333;
+  font-family: "Courier New", monospace;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Progress Ring */
+.progress-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 879.646; /* 2 * PI * 140 */
+  stroke-dashoffset: 879.646;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.control-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: #4caf50;
+  color: white;
+}
+
+.primary:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.secondary {
+  background: #ff9800;
+  color: white;
+}
+
+.secondary:hover:not(:disabled) {
+  background: #e68900;
+  transform: translateY(-2px);
+}
+
+.tertiary {
+  background: #f44336;
+  color: white;
+}
+
+.tertiary:hover:not(:disabled) {
+  background: #da190b;
+  transform: translateY(-2px);
+}
+
+/* Cycle Counter */
+.cycle-counter {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Settings Button */
+.settings-btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.settings-btn:hover {
+  background: #1976d2;
+  transform: translateY(-2px);
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="number"]:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+/* Checkbox Styles */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-left: 2rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-group input:checked ~ .checkmark {
+  background-color: #4caf50;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkbox-group input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-group .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+/* Modal Buttons */
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-save {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #45a049;
+}
+
+.btn-cancel {
+  background: #f44336;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background: #da190b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  #timer {
+    font-size: 3rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .control-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .mode-display {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mode-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  #timer {
+    font-size: 2.5rem;
+  }
+
+  .modal-content {
+    margin: 10% auto;
+    padding: 1.5rem;
+  }
+}
+
+/* Animation Classes */
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+/* Dark theme support (optional enhancement) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  }
+
+  .container {
+    background: rgba(44, 62, 80, 0.95);
+    color: #ecf0f1;
+  }
+
+  .modal-content {
+    background-color: #34495e;
+    color: #ecf0f1;
+  }
+
+  .form-group input[type="number"] {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #555;
+  }
+
+  .checkmark {
+    background-color: #555;
+  }
+}
